@@ -1,12 +1,12 @@
-# Central limit theorems for Collatz hitting times: a Lean 4 formalization
+# Central limit theorems for Collatz hitting times (Lean 4 Formalization)
 
 This repository formalizes, in Lean 4 with Mathlib, natural-density central limit theorems for the
 hitting times of the Collatz map and two of its accelerations, together with corollaries and
 applications. A companion paper is in preparation.
 
 Every theorem is proved in Lean from three explicitly stated hypotheses, which record published
-results that are not formalized here (see [Hypotheses](#hypotheses)). Lean's kernel checks every
-proof, and the proofs use only Lean's three standard axioms: `propext`, `Classical.choice` and
+results that are not formalized here (see [Hypotheses](#hypotheses)). Lean's kernel checks each presented
+proof using only the three standard axioms: `propext`, `Classical.choice` and
 `Quot.sound`.
 
 ## The results
@@ -79,7 +79,7 @@ Theorem and section numbers refer to the companion paper.
 * **Shaik** ([*Positive density of Collatz convergence at every rate above 3/log(4/3)*](https://doi.org/10.5281/zenodo.22871622), September 2026) proved positive lower density of convergence at every rate above `κ_T = 3/log(4/3)`, with effective constants. Building on Mazur's inverse-trajectory framework, the same work gives a second proof of positivity. Shaik also obtained natural-density descent results with logarithmic passage times (SSRN 7290240 and 7341398).
 * **Rhin**'s effective irrationality measure for `log₂ 3` is also used by Allikvere and Mazur. The exact flow identity of Theorem 1.4 is classical in counting form, through the work of Krasikov, of Applegate and Lagarias, and of Wirsching. What is new here is that it holds exactly for the limiting densities.
 
-None of these prior results shows that the predecessor densities exist, or identifies the distribution of the hitting time of actual integers. What this work adds is that the natural densities exist; the central limit theorems and the joint law of the three clocks; the exact densities at every logarithmic rate, including the critical one; the predecessor-density potential; and the applications. Three new ingredients make this possible: a first-passage transfer that keeps the elapsed time as a phase, a twisted renewal theorem, and a renormalisation that cancels the main term between neighbouring scales.
+Prior results do not demonstrate he distribution of the hitting time of actual integers. Additions provided by this work include that natural densities exist; the central limit theorems and the joint law of the three clocks; the exact densities at every logarithmic rate, including the critical rate; the predecessor-density potential; and the downstream applications. Three new ingredients are leveraged: a first-passage transfer that keeps the elapsed time as a phase, a twisted renewal theorem, and a renormalisation that cancels the main term between neighboring scales.
 
 ## Hypotheses
 
@@ -122,12 +122,11 @@ tactics renamed since the code was written; the rest come from style linters (un
 arguments, unused variable names and the like) and from Lean's new module system. Warnings do not
 affect what Lean's kernel checks: the output of `tests/Axioms.lean` is what matters.
 
-## What has to be trusted
+## Fidelity
 
-Lean's kernel checks the proofs, so they need not be read. A reader who wants to confirm that the
-theorems say what is claimed needs to check three things.
+A reader who wants to confirm that the code correctly formalizes the proposed theorems is encouraged to check:
 
-1. **The statements**: the 22 headline theorems listed above.
+1. **The statements**: each of the 22 theorems listed above.
 2. **The definitions they unfold to**: 68 definitions of this library, in 13 files. Followed
    through definition bodies (not through proofs), the statements reach `Defs.lean`,
    `Main/VariantDefs.lean`, `Renewal/Defs.lean`, `Mixing/Imports.lean`, `Transfer/Defs.lean`,
