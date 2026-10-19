@@ -101,9 +101,11 @@ only; `refChoice_exists` and `ref_change` take none; every other headline theore
 
 ## Verifying
 
-You need [elan](https://github.com/leanprover/elan), the Lean toolchain manager. The toolchain
+Verification requires [elan](https://github.com/leanprover/elan), the Lean toolchain manager. The toolchain
 (Lean `v4.35.0-rc4`) and Mathlib (`v4.35.0-rc4`) are pinned in `lean-toolchain`, `lakefile.toml`
-and `lake-manifest.json`. From a clone of this repository:
+and `lake-manifest.json`. 
+
+From a clone of this repository:
 
 ```
 lake exe cache get                    # download prebuilt Mathlib
@@ -112,15 +114,12 @@ lake env lean tests/Verbatim.lean     # frozen statements and definitions; expec
 lake env lean tests/Axioms.lean       # axioms of the 22 headline theorems
 ```
 
-Building the library itself, after the Mathlib download, takes several minutes.
-
 `tests/Axioms.lean` prints the axioms of each headline theorem and fails if any is not one of the
 standard three, so a `sorry` or a `native_decide` anywhere in a proof would be caught.
 
-The build reports 158 warnings and no errors. Most are deprecation notices for Mathlib lemmas and
+The build reports 158 warnings and no errors. Reported warnings are deprecation notices for Mathlib lemmas and
 tactics renamed since the code was written; the rest come from style linters (unused `simp`
-arguments, unused variable names and the like) and from Lean's new module system. Warnings do not
-affect what Lean's kernel checks: the output of `tests/Axioms.lean` is what matters.
+arguments, unused variable names and the like) and from Lean's new module system. 
 
 ## Fidelity
 
